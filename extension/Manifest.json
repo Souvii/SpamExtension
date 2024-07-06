@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Techno Spam Mail Detector",
+  "version": "0.0.2",
+  "description": "Detects spam mail in your inbox.",
+  "permissions": [
+    "identity",
+    "identity.email",
+    "notifications"
+  ],
+  "icons": {
+    "128": "logo.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://mail.google.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "128": "logo.png"
+    }
+  },
+  "oauth2": {
+    "client_id": "<YOUR_CLIENT_ID>.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/gmail.readonly"
+    ]
+  }
+}
